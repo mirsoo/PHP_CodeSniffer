@@ -167,16 +167,17 @@ class PHP_CodeSniffer_Reports_Full implements PHP_CodeSniffer_Report
                     }
 
                     echo ' | ';
-                    if ($report['fixable'] > 0) {
-                        echo '[';
-                        if ($error['fixable'] === true) {
-                            echo 'x';
-                        } else {
-                            echo ' ';
-                        }
-
-                        echo '] ';
-                    }
+                    //Don't show fixing options
+//                    if ($report['fixable'] > 0) {
+//                        echo '[';
+//                        if ($error['fixable'] === true) {
+//                            echo 'x';
+//                        } else {
+//                            echo ' ';
+//                        }
+//
+//                        echo '] ';
+//                    }
 
                     echo $errorMsg.PHP_EOL;
                 }//end foreach
