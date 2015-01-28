@@ -96,6 +96,8 @@ class PHP_CodeSniffer_Reports_Full implements PHP_CodeSniffer_Report
         }
 
         $file       = $report['filename'];
+        //Only show file name
+        $file = strrchr($file, '/');
         $fileLength = strlen($file);
         if (($fileLength + 6) > ($maxErrorLength + $paddingLength)) {
             $width = min($width, ($fileLength + 6));
@@ -182,10 +184,11 @@ class PHP_CodeSniffer_Reports_Full implements PHP_CodeSniffer_Report
         }//end foreach
 
         echo str_repeat('-', $width).PHP_EOL;
-        if ($report['fixable'] > 0) {
-            echo "\033[1m".'PHPCBF CAN FIX THE '.$report['fixable'].' MARKED SNIFF VIOLATIONS AUTOMATICALLY'."\033[0m".PHP_EOL;
-            echo str_repeat('-', $width).PHP_EOL;
-        }
+        //Don't report about automatically fixing
+//        if ($report['fixable'] > 0) {
+//            echo "\033[1m".'PHPCBF CAN FIX THE '.$report['fixable'].' MARKED SNIFF VIOLATIONS AUTOMATICALLY'."\033[0m".PHP_EOL;
+//            echo str_repeat('-', $width).PHP_EOL;
+//        }
 
         echo PHP_EOL;
         return true;
